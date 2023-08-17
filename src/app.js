@@ -16,7 +16,7 @@ app.get('/products', async (req, res) => {
 
 app.get('/products/:id', async (req, res) =>{
     const id = parseInt(req.params.id)
-    const result = await productManager.getProductById(id)
+    const result = await productManager.getProductsById(id)
     if (typeof result == 'string') {
         const error = result.split(' ')
         return res.status(parseInt(error[0].slice(1,4))).json({error:result.slice(6)})
@@ -25,3 +25,4 @@ app.get('/products/:id', async (req, res) =>{
 })
 
 app.listen(8080, () => console.log('server up'))
+console.log(error)
